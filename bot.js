@@ -11,6 +11,7 @@ if(process.env.NODE_ENV === 'production'){
 }else{
     bot = new Bot(token,{polling:true});
 }
+const request = require('request');
 console.log("Bot server started in "+process.env.NODE_ENV+" mode");
 bot.onText(/\/stock(.+)/, (msg,match)=>{
     let chatId = msg.chat.id;
