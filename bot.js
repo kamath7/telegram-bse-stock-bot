@@ -25,7 +25,7 @@ bot.onText(/\/stock(.+)/, (msg,match)=>{
             }
             // bot.sendMessage(chatId,`The current price in BSE for ${res.stockName} is ${res.stockPrice}`);
             let daysHighLow = res.dayHigh+"-"+res.dayLow;
-            let change = parseInt(res.stockPrice) - parseFloat(res.previousClose.replace(",",""));
+            let change = parseInt(res.stockPrice) - parseFloat(res.previousClose.replace(",","")).toFixed(2);
             bot.sendMessage(chatId,`${res.stockName} details: BSE - Current Rs.${res.stockPrice}, Previous Close Rs.${res.previousClose}, Change Rs.${change} Day's High/Low Rs.${daysHighLow}, Year's High/Low Rs.${res.yearlyHighLow}. NSE - Current price ${res.NSEPrice}`);
         }
     });
