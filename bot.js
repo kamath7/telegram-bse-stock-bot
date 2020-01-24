@@ -46,6 +46,22 @@ bot.onText(/\/sensex/, (msg,match)=>{
         }
     });
 });
+bot.onText(/\/nifty/, (msg,match)=>{
+    let chatId = msg.chat.id;
+    
+    request(`https://kams-stocks.herokuapp.com/prices`,(error,response,body)=>{
+        if(!error && body){
+            let res = JSON.parse(body);
+            if(res.stockPrice === " "){
+                bot.sendMessage(chatId,"Stock not found!");
+                return;
+            }
+            // bot.sendMessage(chatId,`The current price in BSE for ${res.stockName} is ${res.stockPrice}`);
+            let nsePrice = res.NSERate;
+            bot.sendMessage(chatId,`Sensex currently stands at ${nsePrice}.`);
+        }
+    });
+});
 
 module.exports = bot;
 
