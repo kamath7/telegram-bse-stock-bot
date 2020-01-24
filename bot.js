@@ -41,8 +41,8 @@ bot.onText(/\/sensex/, (msg,match)=>{
                 return;
             }
             // bot.sendMessage(chatId,`The current price in BSE for ${res.stockName} is ${res.stockPrice}`);
-            let bsePrice = res.bsePrice;
-            bot.sendMessage(chatId,`Sensex currently stands at ${BSERate}.`);
+            let bsePrice = res.BSERate;
+            bot.sendMessage(chatId,`Sensex currently stands at ${bsePrice}.`);
         }
     });
 });
